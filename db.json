@@ -1,0 +1,62 @@
+{
+    "productList": [
+        {
+            "id": 1,
+            "category": "Corrida",
+            "nome": "K-Swiss V8",
+            "marca": "K-Swiss",
+            "preco": 200,
+            "priceDiscount": 0.30,
+            "imagem": "/src/assets/img/tenis3.png",
+            "reference": "Casual | Nike | REF:38416711",
+            "stars": 4.1,
+            "rating": 90,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "tamanhos": [39, 40, 41, 42, 43],
+            "cores": ["#6eeeff", "#ff6969", "#5d5d5d", "#6b70b7"]
+        },
+        {
+            "id": 2,
+            "category": "Corrida",
+            "nome": "Nike Air Zoom Pegasus 37",
+            "preco": 300,
+            "priceDiscount": 0.20,
+            "imagem": "/src/assets/img/tenis3.png",
+            "reference": "Casual | Nike | REF:38416711",
+            "stars": 4.5,
+            "rating": 123,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "tamanhos": [39, 40, 41, 42, 43],
+            "cores": ["#6eeeff", "#ff6969", "#5d5d5d", "#6b70b7"]
+        },
+        {
+            "id": 3,
+            "category": "Corrida",
+            "nome": "Adidas Ultraboost 18",
+            "preco": 150,
+            "priceDiscount": 0.10,
+            "imagem": "/src/assets/img/tenis3.png",
+            "reference": "Casual | Nike | REF:38416711",
+            "stars": 3.2,
+            "rating": 145,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "tamanhos": [39, 40, 41, 42, 43],
+            "cores": ["#6eeeff", "#ff6969", "#5d5d5d", "#6b70b7"]
+        },
+        {
+            "id": 4,
+            "category": "Corrida",
+            "nome": "Reebok Classic V2",
+            "preco": 250,
+            "priceDiscount": 0.25,
+            "imagem": "/src/assets/img/tenis3.png",
+            "reference": "Casual | Nike | REF:38416711",
+            "stars": 4.2,
+            "rating": 200,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "tamanhos": [39, 40, 41, 42, 43],
+            "cores": ["#6eeeff", "#ff6969", "#5d5d5d", "#6b70b7"]
+        }
+
+    ]
+}
