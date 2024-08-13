@@ -9,6 +9,7 @@ const StyledSection = styled.section`
 
     & .section_title_center {
         text-align: center;
+        width: 100%;
     }
 
 `

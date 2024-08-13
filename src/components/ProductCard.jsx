@@ -1,10 +1,19 @@
-const ProductCard = ({img, price, category, name, priceDiscount}) => {
+import { useNavigate } from "react-router-dom"
+
+const ProductCard = ({id, img, price, category, name, priceDiscount}) => {
 
     const newPrice = price - (price * priceDiscount)
+    const navigate = useNavigate()
+
+    const handleClickProduct = (idProduto) => {
+        console.log("clicou")
+        navigate(`/produto/${idProduto}`)
+    }
+
 
     return ( 
         <>
-            <div className={`product_card ${priceDiscount > 0 && priceDiscount <= 1 ? "discount" : ""}`}>
+            <div className={`product_card ${priceDiscount > 0 && priceDiscount <= 1 ? "discount" : ""}`} onClick={() => {handleClickProduct(id)}}>
                 <div className="product_card_img_container">
                     <p className="product_card_discount_tag">{priceDiscount > 0 && priceDiscount < 1 ? priceDiscount * 100 : priceDiscount * 100}% off</p>
                     <img className="product_card_img" src={img} alt="Imagem do produto" />

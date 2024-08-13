@@ -9,7 +9,6 @@ import styled from "styled-components";
 import Gallery from "../components/Gallery";
 
 const StyledProductViewPage = styled.section`
-    padding: 40px 6vw;
     
     & .product_view {
         display: flex;
@@ -72,7 +71,7 @@ const StyledProductViewPage = styled.section`
 `
 
 const ProductViewPage = () => {
-    const baseUrl = "http://localhost:3000"
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     const [produto, setProduto] = useState({})
     const [produtosRelacionados, setProdutosRelacionados] = useState([])
     const { id } = useParams()
@@ -131,25 +130,28 @@ const ProductViewPage = () => {
     return ( 
         <>
             <StyledProductViewPage className="product_view_page">
+                <p>Lorem/ ipsum dolor sit/ amet/ consectetur.</p>
                 <div className="product_view">
-                    <Gallery 
-                        className="gallery_container"
-                        imagens={imagens} 
-                        width="700px" 
-                        height="571px" 
-                        radius="4px" 
-                        showThumbs={imagens.length > 1 ? true : false}/>
-                    <BuyBox
-                        name={produto.nome}
-                        reference={produto.reference}
-                        stars={produto.stars}
-                        rating={produto.rating}
-                        priceDiscount={produto.priceDiscount}
-                        price={produto.preco}
-                        description={produto.description}>
-                        <ProductOption title="tamanhos" type="checkbox" options={produto.tamanhos || []}/>
-                        <ProductOption title="cores" type="radio" options={produto.cores || []}/>
-                    </BuyBox>
+                    <Sections title="" titleAlign="" link="">
+                        <Gallery 
+                            className="gallery_container"
+                            imagens={imagens} 
+                            width="700px" 
+                            height="571px" 
+                            radius="4px" 
+                            showThumbs={imagens.length > 1 ? true : false}/>
+                        <BuyBox
+                            name={produto.nome}
+                            reference={produto.reference}
+                            stars={produto.stars}
+                            rating={produto.rating}
+                            priceDiscount={produto.priceDiscount}
+                            price={produto.preco}
+                            description={produto.description}>
+                            <ProductOption title="tamanhos" type="checkbox" options={produto.tamanhos || []}/>
+                            <ProductOption title="cores" type="radio" options={produto.cores || []}/>
+                        </BuyBox>
+                    </Sections>
                 </div>
 
                 <Sections title="Produtos Relacionados" titleAlign="left" link={link}>
@@ -157,12 +159,13 @@ const ProductViewPage = () => {
                         // Mostrar os produtos que contêm o filtro
                         produtosRelacionados.map((produto, index) => (
                             <ProductCard
-                            key={index}
-                            img={produto.imagem}
-                            price={produto.preco}
-                            category={produto.category}
-                            name={produto.nome}
-                            priceDiscount={produto.priceDiscount}
+                                key={index}
+                                id={produto.id}
+                                img={produto.imagem}
+                                price={produto.preco}
+                                category={produto.category}
+                                name={produto.nome}
+                                priceDiscount={produto.priceDiscount}
                             />
                         ))
                     }

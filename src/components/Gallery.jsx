@@ -34,6 +34,7 @@ const Gallery = ({imagens, radius, className, width, height, showThumbs}) => {
                         <div className="gallery_thumbs_container">
                             {imagens.map((image, index) => (
                                 <div 
+                                    key={index}
                                     className="gallery_thumbs" 
                                     style={{borderRadius: radius, backgroundColor: image.bgColor}} 
                                     onClick={() => goToImage(index)}>

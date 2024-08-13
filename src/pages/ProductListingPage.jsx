@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import "../App.css";
 import FilterGroup from "../components/FilterGroup";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StyledProductListing = styled.section`
     .material-symbols-rounded {
@@ -46,7 +46,6 @@ const StyledProductListing = styled.section`
 
     & #product_listing_bottom {
         display: flex;
-        justify-content: space-between;
         padding-top: 50px;
         gap: 28px;
 
@@ -84,45 +83,86 @@ const StyledProductListing = styled.section`
                     letter-spacing: normal.75px;
                 }
 
-                & li {
+                & li.checkbox {
                     display: flex;
                     gap: 10px;
-                    cursor: pointer;
 
                     & label {
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid #666;
+                        border-radius: 2px;
                         cursor: pointer;
+
+                        & img {
+                            width: 13px;
+                        }
                     }
 
                     & input[type="checkbox"] {
                         appearance: none;
                         -webkit-appearance: none;
                         -moz-appearance: none;
-                        width: 20px;
-                        height: 20px;
-                        border: 1px solid #666;
-                        border-radius: 2px;
-                        cursor: pointer;
-                        font-family: 'Material Icons';
-                        font-size: 15px;
-                        font-weight: 400;
 
-                        &:checked {
+                        &:checked + label{
                             background-color: var(--primary);
                             border: 1px solid var(--primary);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            
+                        }
+                    }
+                }
+
+                & li.radio {
+                    display: flex;
+                    gap: 10px;
+
+                    & label {
+                        width: 22px;
+                        height: 22px;
+                        padding: 3px;
+                        border: 1px solid #666;
+                        border-radius: 50%;
+                        cursor: pointer;
+
+                        & img {
+                            display: none;
+                        }
+                    }
+
+                    & input[type="radio"] {
+                        appearance: none;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+
+                        &:checked + label{
+                            border: 1px solid var(--primary);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            & span {
+                                background-color: var(--primary);
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 50%;
+                            }
                         }
                     }
                 }
             }
         }
     }
-
-
 `
 
 const ProductListingPage = () => {
-    const baseUrl = "http://localhost:3000"
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     const [produtos, setProdutos] = useState([])
     const { filter } = useParams()
+    console.log(window.location.origin);
+    
 
     useEffect(() => {
         // Buscar os produtos
@@ -257,12 +297,14 @@ const ProductListingPage = () => {
                     <FilterGroup title="Estado" inputType="radio" options={estadoList}/>
                 
                 </div>
-                <Sections title="" titleAlign="left" link="" >
+                <Sections title="" titleAlign="" link="" >
                         {
                             filter != null && filter.length > 0 && filter != undefined ?
                             // Mostrar os produtos que contêm o filtro
-                            produtos_filtrados.map(produto => (
+                            produtos_filtrados.map((produto, index) => (
                                 <ProductCard 
+                                    id={produto.id}
+                                    key={index}
                                     img={produto.imagem} 
                                     price={produto.preco} 
                                     category={produto.category} 
@@ -271,8 +313,10 @@ const ProductListingPage = () => {
                             />
                             ))
                             // Mostrar todos os produtos caso não haja filtro
-                            : produtos.map(produto => (
+                            : produtos.map((produto, index) => (
                                 <ProductCard
+                                    id={produto.id}
+                                    key={index}
                                     img={produto.imagem}
                                     price={produto.preco}
                                     category={produto.category}

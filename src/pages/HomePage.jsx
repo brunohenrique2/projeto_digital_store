@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import Gallery from "../components/Gallery";
 
 const HomePage = () => {
-    const baseUrl = "http://localhost:3000"
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     const link = {
         text: "Ver Todos",
         href: "/produtos/all"
@@ -37,35 +37,35 @@ const HomePage = () => {
 
     const imageSlide = [
         {
-            src: "../../src/assets/img/home-slide-1.jpeg",
+            src: "src/assets/img/home-slide-1.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-2.jpeg",
+            src: "src/assets/img/home-slide-2.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-3.jpeg",
+            src: "src/assets/img/home-slide-3.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-4.jpeg",
+            src: "src/assets/img/home-slide-4.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-5.jpeg",
+            src: "src/assets/img/home-slide-5.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-6.jpeg",
+            src: "src/assets/img/home-slide-6.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-7.jpeg",
+            src: "src/assets/img/home-slide-7.jpeg",
             alt: "Nike Air Max"
         },
         {
-            src: "../../src/assets/img/home-slide-8.jpeg",
+            src: "src/assets/img/home-slide-8.jpeg",
             alt: "Nike Air Max"
         }
     ]
@@ -108,50 +108,54 @@ const HomePage = () => {
                     </div>
                 </section>
                 <section className="featured_colletion_container">
-                    <h2 className="featured_colletion_container_title">Coleções em Destaque</h2>
-                    <div className="featured_colletion_space">
-                        <FeaturedColletion id="colletion_1" title="Novo Drop Supreme" priceDescount="30%" img={ColletionImg1}/>
-                        <FeaturedColletion id="colletion_2" title="Coleção Adidas" priceDescount="30%" img={ColletionImg2}/>
-                        <FeaturedColletion id="colletion_3" title="Novo Beats Bass" priceDescount="30%" img={ColletionImg3}/>
-                    </div>
-                    <h2 className="featured_colletion_options_title">Coleções em Destaque</h2>
-                    <div className="featured_colletion_options_container">
-                        <div className="featured_colletion_options">
-                            <div className="featured_colletion_options_img">
-                                <img src={TshirtIcon} alt="" />
-                            </div>
-                            <p>Camisetas</p>
+                    <Sections title="Coleção em Destaque" titleAlign="left" link="">
+                        <div className="featured_colletion_space">
+                            <FeaturedColletion id="colletion_1" title="Novo Drop Supreme" priceDescount="30%" img={ColletionImg1}/>
+                            <FeaturedColletion id="colletion_2" title="Coleção Adidas" priceDescount="30%" img={ColletionImg2}/>
+                            <FeaturedColletion id="colletion_3" title="Novo Beats Bass" priceDescount="30%" img={ColletionImg3}/>
                         </div>
-                        <div className="featured_colletion_options">
-                            <div className="featured_colletion_options_img">
-                                <img src={CalcaIcon} alt="" />
+                    </Sections>
+                    <Sections title="Coleção em Destaque" titleAlign="center" link="">
+                        <div className="featured_colletion_options_container">
+                            <div className="featured_colletion_options">
+                                <div className="featured_colletion_options_img">
+                                    <img src={TshirtIcon} alt="" />
+                                </div>
+                                <p>Camisetas</p>
                             </div>
-                            <p>Calças</p>
-                        </div>
-                        <div className="featured_colletion_options">
-                            <div className="featured_colletion_options_img">
-                                <img src={CalcaIcon} alt="" />
+                            <div className="featured_colletion_options">
+                                <div className="featured_colletion_options_img">
+                                    <img src={CalcaIcon} alt="" />
+                                </div>
+                                <p>Calças</p>
                             </div>
-                            <p>Bonés</p>
-                        </div>
-                        <div className="featured_colletion_options">
-                            <div className="featured_colletion_options_img">
-                                <img src={HeadphoneIcon} alt="" />
+                            <div className="featured_colletion_options">
+                                <div className="featured_colletion_options_img">
+                                    <img src={CalcaIcon} alt="" />
+                                </div>
+                                <p>Bonés</p>
                             </div>
-                            <p>Headphones</p>
-                        </div>
-                        <div className="featured_colletion_options">
-                            <div className="featured_colletion_options_img">
-                                <img src={TenisIcon} alt="" />
+                            <div className="featured_colletion_options">
+                                <div className="featured_colletion_options_img">
+                                    <img src={HeadphoneIcon} alt="" />
+                                </div>
+                                <p>Headphones</p>
                             </div>
-                            <p>Tênis</p>
+                            <div className="featured_colletion_options">
+                                <div className="featured_colletion_options_img">
+                                    <img src={TenisIcon} alt="" />
+                                </div>
+                                <p>Tênis</p>
+                            </div>
                         </div>
-                    </div>
+                    </Sections>
                 </section>
                 <Sections title="Produtos em alta" titleAlign="left" link={link}>
                     {
-                        produtos.map(produto => (
+                        produtos.map((produto, index) => (
                             <ProductCard 
+                                key={index}
+                                id={produto.id}
                                 img={produto.imagem} 
                                 price={produto.preco} 
                                 category={produto.category} 

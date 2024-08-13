@@ -134,20 +134,14 @@ body {
     border-radius: 50%;
 }
 
-#home .promo_content_container .promo_pages_container .promo_pages.active {
+#home .promo_content_container .promo_pages_container .promo_pages.checked {
     background-color: var(--primary);
 }
 
 #home .featured_colletion_container {
-    padding: 40px 6vw;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     gap: 20px;
-}
-
-#home .featured_colletion_container h2 {
-    color: var(--dark-gray);
 }
 
 #home .featured_colletion_container .featured_colletion_space {

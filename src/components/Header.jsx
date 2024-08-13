@@ -103,6 +103,12 @@ const StyledHeader = styled.header`
                     text-decoration: underline;
                     font-size: 16px;
                 }
+
+                &:hover {
+                    color: var(--primary);
+                    text-decoration: underline;
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -124,7 +130,14 @@ const Header = () => {
                 <div id="header_top">
                     <Logo cor="#C92071"/>
                     <form onSubmit={handleSubmit} id="search_container">
-                        <input value={filter} type="text" name="filter" id="search" onChange={(e) => setFilter(e.target.value)} placeholder="Pesquisar produto..." />
+                        <input 
+                            value={filter} 
+                            type="text" 
+                            name="filter" 
+                            id="search" 
+                            onChange={(e) => setFilter(e.target.value)} 
+                            placeholder="Pesquisar produto..." 
+                        />
                         <button type="submit"><img src={IconSearch} alt="icon search" /></button>
                     </form>
                     <p><a href="/cadastro">Cadastrar</a></p>
